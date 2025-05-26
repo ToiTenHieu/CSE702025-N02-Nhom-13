@@ -10,7 +10,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Http\Request;
-
 // Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -67,3 +66,18 @@ Route::post('/email/verification-notification', function (Request $request) {
 //     $request->fulfill();
 //     return redirect('/dashboard'); // Hoặc trang khác sau xác minh
 // })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+// Route cho phòng Deluxe
+Route::get('/phong/deluxe', function () {
+    return view('rooms.deluxe');
+})->name('rooms.deluxe');
+
+// Route cho phòng Family
+Route::get('/phong/family', function () {
+    return view('rooms.family');
+})->name('rooms.family');
+
