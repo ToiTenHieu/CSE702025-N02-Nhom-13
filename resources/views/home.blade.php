@@ -28,10 +28,10 @@
             <div class="user">
                 <span>Admin123</span>
                 <a href="#">ACP</a>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="logout-btn">Đăng xuất</button>
-        </form>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="logout-btn">Đăng xuất</button>
+                </form>
                 <div class="language-wrapper">
                     <button class="language-selector">VI</button>
                     <div class="dropdown">
@@ -94,157 +94,78 @@
         <img class="fontt" src="{{ asset('images/trangtri.png') }}" />
         <h2>Không gian nghỉ dưỡng đẳng cấp,<br> nơi từng chi tiết được chăm chút để tôn vinh sự tinh tế và riêng tư của bạn.</h2>
     </div>
-    <h1>Nơi lưu chú tại ưu tú tại Hà Nội ></h1>
+    <h1>Thông tin phòng nghỉ tại Hà Nội ></h1>
     <div class="room-container">
-
-        <!-- PHÒNG DELUXE -->
-        <!-- PHÒNG DELUXE -->
-        <a href="{{ route('rooms.deluxe') }}" class="room-card">
-            <img src="{{ asset('images/home1.jpg') }}" alt="Phòng Deluxe" />
+        @foreach ($rooms->where('city', 'Hanoi') as $room)
+        @if ($room && $room->image_path)
+        <a href="{{ route('rooms.detail', $room->id) }}" class="room-card">
+            <img src="{{ asset($room->image_path) }}" alt="Phòng {{ $room->name }}" />
             <div class="room-info">
-                <h3>DELUXE SKY</h3>
-                <p>500,000đ / NGÀY</p>
+                <h3>{{ $room->name }}</h3>
+                <p>{{ number_format($room->price, 0, ',', '.') }}đ / NGÀY</p>
             </div>
         </a>
-
-        <!-- PHÒNG FAMILY -->
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home2.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home3.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-
+        @endif
+        @endforeach
     </div>
-    <h1>Nơi lưu chú tại thành phố Hồ Chí Minh ></h1>
+    <h1>Thông tin phòng nghỉ tại Hồ Chí Minh ></h1>
     <div class="room-container">
-
-        <!-- PHÒNG DELUXE -->
-        <!-- PHÒNG DELUXE -->
-        <a href="{{ route('rooms.deluxe') }}" class="room-card">
-            <img src="{{ asset('images/home4.jpg') }}" alt="Phòng Deluxe" />
+        @foreach ($rooms->where('city', 'HCM') as $room)
+        @if ($room && $room->image_path)
+        <a href="{{ route('rooms.detail', $room->id) }}" class="room-card">
+            <img src="{{ asset($room->image_path) }}" alt="Phòng {{ $room->name }}" />
             <div class="room-info">
-                <h3>DELUXE SKY</h3>
-                <p>500,000đ / NGÀY</p>
+                <h3>{{ $room->name }}</h3>
+                <p>{{ number_format($room->price, 0, ',', '.') }}đ / NGÀY</p>
             </div>
         </a>
-
-        <!-- PHÒNG FAMILY -->
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home5.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home6.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-
+        @endif
+        @endforeach
     </div>
-
-    <h1>Nơi lưu chú tại thành phố Đà Lạt ></h1>
+    <h1>Thông tin phòng nghỉ tại Đà Nẵng > </h1>
     <div class="room-container">
-
-        <!-- PHÒNG DELUXE -->
-        <!-- PHÒNG DELUXE -->
-        <a href="{{ route('rooms.deluxe') }}" class="room-card">
-            <img src="{{ asset('images/home7.jpg') }}" alt="Phòng Deluxe" />
+        @foreach ($rooms->where('city', 'DaNang') as $room)
+        @if ($room && $room->image_path)
+        <a href="{{ route('rooms.detail', $room->id) }}" class="room-card">
+            <img src="{{ asset($room->image_path) }}" alt="Phòng {{ $room->name }}" />
             <div class="room-info">
-                <h3>DELUXE SKY</h3>
-                <p>500,000đ / NGÀY</p>
+                <h3>{{ $room->name }}</h3>
+                <p>{{ number_format($room->price, 0, ',', '.') }}đ / NGÀY</p>
             </div>
         </a>
-
-        <!-- PHÒNG FAMILY -->
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home8.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home9.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-
+        @endif
+        @endforeach
     </div>
-    <h1>Nơi lưu chú tại thành phố Đà Nẵng ></h1>
+    <h1>Thông tin phòng nghỉ tại Nha Trang ></h1>
     <div class="room-container">
-
-        <!-- PHÒNG DELUXE -->
-        <!-- PHÒNG DELUXE -->
-        <a href="{{ route('rooms.deluxe') }}" class="room-card">
-            <img src="{{ asset('images/home10.jpg') }}" alt="Phòng Deluxe" />
+        @foreach ($rooms->where('city', 'NhaTrang') as $room)
+        @if ($room && $room->image_path)
+        <a href="{{ route('rooms.detail', $room->id) }}" class="room-card">
+            <img src="{{ asset($room->image_path) }}" alt="Phòng {{ $room->name }}" />
             <div class="room-info">
-                <h3>DELUXE SKY</h3>
-                <p>500,000đ / NGÀY</p>
+                <h3>{{ $room->name }}</h3>
+                <p>{{ number_format($room->price, 0, ',', '.') }}đ / NGÀY</p>
             </div>
         </a>
-
-        <!-- PHÒNG FAMILY -->
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home11.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home12.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-
+        @endif
+        @endforeach
     </div>
-    <h1>Nơi lưu chú tại thành phố Nha Trang></h1>
+    <h1>Thông tin phòng nghỉ tại Đà Lạt ></h1>
     <div class="room-container">
-
-        <!-- PHÒNG DELUXE -->
-        <!-- PHÒNG DELUXE -->
-        <a href="{{ route('rooms.deluxe') }}" class="room-card">
-            <img src="{{ asset('images/home13.jpg') }}" alt="Phòng Deluxe" />
+        @foreach ($rooms->where('city', 'DaLat') as $room)
+        @if ($room && $room->image_path)
+        <a href="{{ route('rooms.detail', $room->id) }}" class="room-card">
+            <img src="{{ asset($room->image_path) }}" alt="Phòng {{ $room->name }}" />
             <div class="room-info">
-                <h3>DELUXE SKY</h3>
-                <p>500,000đ / NGÀY</p>
+                <h3>{{ $room->name }}</h3>
+                <p>{{ number_format($room->price, 0, ',', '.') }}đ / NGÀY</p>
             </div>
         </a>
-
-        <!-- PHÒNG FAMILY -->
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home14.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-        <a href="{{ route('rooms.family') }}" class="room-card">
-            <img src="{{ asset('images/home15.jpg') }}" alt="Phòng Family" />
-            <div class="room-info">
-                <h3>FAMILY</h3>
-                <p>400,000đ / NGÀY</p>
-            </div>
-        </a>
-
+        @endif
+        @endforeach
     </div>
+
+
 
     <div class="about-section">
         <div class="about-text">
@@ -320,74 +241,74 @@
         </div>
     </section>
     <section class="testimonial-section">
-  <div class="testimonial-container">
-  <button class="arrow left" onclick="prevSlide()">&#10094;</button>
-<button class="arrow right" onclick="nextSlide()">&#10095;</button>
+        <div class="testimonial-container">
+            <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+            <button class="arrow right" onclick="nextSlide()">&#10095;</button>
 
-    <!-- Slide 1 -->
-    <div class="testimonial-slide active">
-      <img src="{{ asset('images/beach.jpg') }}" alt="Ảnh khách hàng 1" class="testimonial-avatar" />
-      <p class="testimonial-text">
-        “Đây là một nơi tuyệt vời ngay trên một bãi biển cát trắng yên tĩnh...”
-      </p>
-      <h3 class="testimonial-name">Phil Tritton</h3>
-      <p class="testimonial-rating" data-rating="5"></p>
-    </div>
+            <!-- Slide 1 -->
+            <div class="testimonial-slide active">
+                <img src="{{ asset('images/beach.jpg') }}" alt="Ảnh khách hàng 1" class="testimonial-avatar" />
+                <p class="testimonial-text">
+                    “Đây là một nơi tuyệt vời ngay trên một bãi biển cát trắng yên tĩnh...”
+                </p>
+                <h3 class="testimonial-name">Phil Tritton</h3>
+                <p class="testimonial-rating" data-rating="5"></p>
+            </div>
 
-    <!-- Slide 2 -->
-    <div class="testimonial-slide">
-      <img src="{{ asset('images/beach.jpg') }}" alt="Ảnh khách hàng 2" class="testimonial-avatar" />
-      <p class="testimonial-text">
-        “Kỳ nghỉ ở đây thật sự tuyệt vời, cảnh biển đẹp và đồ ăn ngon...”
-      </p>
-      <h3 class="testimonial-name">Anna Nguyen</h3>
-      <p class="testimonial-rating" data-rating="4.5"></p>
-    </div>
+            <!-- Slide 2 -->
+            <div class="testimonial-slide">
+                <img src="{{ asset('images/beach.jpg') }}" alt="Ảnh khách hàng 2" class="testimonial-avatar" />
+                <p class="testimonial-text">
+                    “Kỳ nghỉ ở đây thật sự tuyệt vời, cảnh biển đẹp và đồ ăn ngon...”
+                </p>
+                <h3 class="testimonial-name">Anna Nguyen</h3>
+                <p class="testimonial-rating" data-rating="4.5"></p>
+            </div>
 
-    <!-- Slide 3 -->
-    <div class="testimonial-slide">
-      <img src="{{ asset('images/beach.jpg') }}" alt="Ảnh khách hàng 3" class="testimonial-avatar" />
-      <p class="testimonial-text">
-        “Tôi sẽ quay lại đây lần nữa, mọi thứ đều trên cả mong đợi...”
-      </p>
-      <h3 class="testimonial-name">John Le</h3>
-      <p class="testimonial-rating" data-rating="5"></p>
-    </div>
+            <!-- Slide 3 -->
+            <div class="testimonial-slide">
+                <img src="{{ asset('images/beach.jpg') }}" alt="Ảnh khách hàng 3" class="testimonial-avatar" />
+                <p class="testimonial-text">
+                    “Tôi sẽ quay lại đây lần nữa, mọi thứ đều trên cả mong đợi...”
+                </p>
+                <h3 class="testimonial-name">John Le</h3>
+                <p class="testimonial-rating" data-rating="5"></p>
+            </div>
 
-    <!-- Navigation Dots -->
-    <div class="testimonial-dots">
-      <span class="dot active" onclick="showSlide(0)"></span>
-      <span class="dot" onclick="showSlide(1)"></span>
-      <span class="dot" onclick="showSlide(2)"></span>
-    </div>
+            <!-- Navigation Dots -->
+            <div class="testimonial-dots">
+                <span class="dot active" onclick="showSlide(0)"></span>
+                <span class="dot" onclick="showSlide(1)"></span>
+                <span class="dot" onclick="showSlide(2)"></span>
+            </div>
 
-  </div>
-</section>
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">
-    <img src="{{ asset('images/homestay.png') }}" style="width: 200px; height: auto;" alt="Logo">
-      <h2>Sky Luxury</h2>
-      <p class="slogan">Hotel & Resort</p>
-    </div>
-    <div class="footer-column">
-      <h3>Về chúng tôi</h3>
-      <ul>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Hình ảnh</a></li>
-        <li><a href="#">Video</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h3>Kết nối với chúng tôi</h3>
-      <ul>
-        <li><a href="#">Liên hệ</a></li>
-        <li>Email: <a href="mailto:huynhminhsangit@gmail.com">huynhminhsangit@gmail.com</a></li>
-        <li>Hotline: <a href="tel:0383308983">0383308983</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="{{ asset('images/homestay.png') }}" style="width: 200px; height: auto;" alt="Logo">
+                <h2>Sky Luxury</h2>
+                <p class="slogann">Hotel & Resort</p>
+            </div>
+            <div class="footer-column">
+                <h3>Về chúng tôi</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Hình ảnh</a></li>
+                    <li><a href="#">Video</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Kết nối với chúng tôi</h3>
+                <ul>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li>Email: <a href="mailto:huynhminhsangit@gmail.com">huynhminhsangit@gmail.com</a></li>
+                    <li>Hotline: <a href="tel:0383308983">0383308983</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

@@ -67,17 +67,25 @@ Route::post('/email/verification-notification', function (Request $request) {
 //     return redirect('/dashboard'); // Hoặc trang khác sau xác minh
 // })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
 
-// Route cho phòng Deluxe
-Route::get('/phong/deluxe', function () {
-    return view('rooms.deluxe');
-})->name('rooms.deluxe');
+Route::get('/admin', function () {
+    return view('admin'); // Đây là trang chính admin
+})->name('admin.dashboard');
 
-// Route cho phòng Family
-Route::get('/phong/family', function () {
-    return view('rooms.family');
-})->name('rooms.family');
+
+
+Route::get('/thongke', function () {
+    return view('thongke');
+})->name('thongke');
+
+
+// Tạm thời cho các route menu khác:
+Route::get('/booking', fn() => view('booking.index'))->name('booking.index');
+Route::get('/posts', fn() => view('posts.index'))->name('posts.index');
+Route::get('/rooms', fn() => view('rooms.index'))->name('rooms.index');
+Route::get('/settings', fn() => view('settings'))->name('settings');
+Route::get('/logout', fn() => redirect('/login'))->name('logout');
+use App\Http\Controllers\HomeController;
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/rooms/{id}', [HomeController::class, 'show'])->name('rooms.detail');
 
