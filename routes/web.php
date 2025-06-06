@@ -67,14 +67,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 //     return redirect('/dashboard'); // Hoặc trang khác sau xác minh
 // })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
 
-// Route cho phòng Deluxe
-Route::get('/phong/deluxe', function () {
-    return view('rooms.deluxe');
-})->name('rooms.deluxe');
+Route::get('/admin', function () {
+    return view('admin'); // Đây là trang chính admin
+})->name('admin.dashboard');
+
 
 // Route cho phòng Family
 Route::get('/phong/family', function () {
@@ -100,5 +97,7 @@ Route::get('/logout', fn() => redirect('/login'))->name('logout');
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/rooms/{id}', [HomeController::class, 'show'])->name('rooms.detail');
+
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+
 

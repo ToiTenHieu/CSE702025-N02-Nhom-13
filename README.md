@@ -1,3 +1,4 @@
+
 ## CSE702025-N02-Nhom-13
 # HỆ THỐNG BOOKING HOMESTAY
 # Thành viên nhóm
@@ -11,3 +12,4 @@
 |-------------------|--------------------|------------------|----------|----|------|----|----|
 | Nguyễn Đăng Hiếu  |  Tìm hiểu về KTPM  | Tìm hiểu Laravel | Trang đăng nhập và đăng ký| Email xác nhận| Chi tiết đặt phòng|
 | Nguyễn Trường Sơn |  Tìm hiểu về KTPM  | Tìm hiểu Laravel | Trang chủ   | Trang chủ |Chi tiết đặt phòng ||
+
