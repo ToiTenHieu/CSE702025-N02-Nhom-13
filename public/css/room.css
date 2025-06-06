@@ -40,7 +40,6 @@ h3 {
 .image-gallery img:hover {
     transform: scale(1.03);
 }
-<<<<<<< HEAD
 .flex-container {
     display: flex;
     gap: 40px;
@@ -92,4 +91,3 @@ h3 {
 .booking-btn:hover {
     background-color: #e04848;
 }
-
