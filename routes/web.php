@@ -80,4 +80,25 @@ Route::get('/phong/deluxe', function () {
 Route::get('/phong/family', function () {
     return view('rooms.family');
 })->name('rooms.family');
+Route::get('/admin', function () {
+    return view('admin'); // Đây là trang chính admin
+})->name('admin.dashboard');
+
+
+
+Route::get('/thongke', function () {
+    return view('thongke');
+})->name('thongke');
+
+
+// Tạm thời cho các route menu khác:
+Route::get('/booking', fn() => view('booking.index'))->name('booking.index');
+Route::get('/posts', fn() => view('posts.index'))->name('posts.index');
+Route::get('/rooms', fn() => view('rooms.index'))->name('rooms.index');
+Route::get('/settings', fn() => view('settings'))->name('settings');
+Route::get('/logout', fn() => redirect('/login'))->name('logout');
+use App\Http\Controllers\HomeController;
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/rooms/{id}', [HomeController::class, 'show'])->name('rooms.detail');
+Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 

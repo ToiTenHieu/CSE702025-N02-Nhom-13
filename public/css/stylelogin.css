@@ -13,7 +13,7 @@ body {
 .left-panel {
     display: flex;
     gap: 10px;
-    width: 900px; /* 3 cột x 300px */
+    width: 950px; /* 3 cột x 300px */
     padding: 20px;
     background: #fff;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
