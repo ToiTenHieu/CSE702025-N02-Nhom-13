@@ -195,232 +195,363 @@ a) Use Case cho Người dùng (User)
 
 b) Use Case cho Quản trị viên (Admin)
 
-STT	Use Case	Mô tả chức năng
-1	Đăng nhập	Truy cập hệ thống quản trị
-2	Quản lý homestay	Thêm, sửa, xóa thông tin phòng
-3	Quản lý đơn đặt	Xem, xác nhận, từ chối đơn đặt của người dùng
-4	Quản lý người dùng	Xem danh sách user và hành vi đặt phòng (nếu có triển khai)
-5	Thống kê	Thông kê dữ liệu 
-5	Đăng xuất	Thoát khỏi hệ thống admin
+|STT	|Use Case	|Mô tả chức năng|
+|1|	Đăng nhập	|Truy cập hệ thống quản trị|
+|2|	Quản lý homestay	|Thêm, sửa, xóa thông tin phòng|
+|3|	Quản lý đơn đặt|	Xem, xác nhận, từ chối đơn đặt của người dùng|
+|4	|Quản lý người dùng	|Xem danh sách user và hành vi đặt phòng (nếu có triển khai)|
+|5|	Thống kê|	Thông kê dữ liệu |
+|6	|Đăng xuất	|Thoát khỏi hệ thống admin|
 
-
+![](img/Picture2.png)
  
-
 Mô tả Use Case chi tiết:
+
 a) Use Case: Tìm kiếm phòng
+
 •	Tác nhân: Người dùng (User)
+
 •	Mục tiêu: Cho phép người dùng tìm kiếm homestay theo thành phố, từ khóa
+
 •	Tiền điều kiện: Người dùng đã đăng nhập
+
 •	Luồng sự kiện chính:
+
 1.	Người dùng truy cập giao diện trang chủ hoặc trang tìm kiếm.
+
 2.	Người dùng chọn:
+
 	Ngày nhận phòng (check in)
+
 	Ngày trả phòng (check out)
+
 	Thành phố cần đến
+
 3.	Nhấn nút “Tìm kiếm”
+
 4.	Hệ thống kiểm tra:
+
 	Các phòng thuộc thành phố được chọn
+
 	Phòng chưa bị đặt trùng trong khoảng thời gian đó
+
 5.	Hệ thống hiển thị danh sách phòng còn trống phù hợp
+
 •	Hậu điều kiện: Danh sách phòng được hiển thị, người dùng có thể chọn để xem chi tiết
 
+![](img/Picture3.png)
  
 b) Use Case: Đặt phòng
+
+
 •	Tác nhân: Người dùng (User)
+
 •	Mục tiêu: Cho phép đặt phòng homestay online
+
 •	Tiền điều kiện: Người dùng đã đăng nhập và chọn được phòng
+
 •	Luồng sự kiện chính:
+
 1.	Người dùng nhấn “Đặt phòng” trong trang chi tiết
+
 2.	Nhập ngày nhận – trả phòng
+
 3.	Xác nhận đặt phòng
+
 4.	Hệ thống lưu thông tin vào cơ sở dữ liệu
+
 5.	Hiển thị thông báo đặt phòng thành công
+
 •	Hậu điều kiện: Đơn đặt phòng mới được tạo trong hệ thống
 
-
- 
+![](img/Picture4.png)
 
 
 
 c) Use Case: Cập nhật thông tin cá nhân
+
 •	Tác nhân: Người dùng (User)
+
 •	Mục tiêu: Cho phép người dùng cập nhật thông tin tài khoản
+
 •	Tiền điều kiện: Người dùng đã đăng nhập
+
 •	Luồng sự kiện chính:
+
 1.	Người dùng vào mục “Tài khoản cá nhân”
+
 2.	Nhấn “Cập nhật”
+
 3.	Nhập các thông tin mới: họ tên, số điện thoại, ngày sinh
+
 4.	Hệ thống kiểm tra và lưu lại thông tin mới
+
 5.	Thông báo “Cập nhật thành công”
+
 •	Hậu điều kiện: Dữ liệu cá nhân được cập nhật trên hệ thống
 
  
-
+![](img/Picture5.png)
 
 
 
 d) Use Case: Quản lý phòng
+
 •	Tác nhân: Quản trị viên (Admin)
+
 •	Mục tiêu: Cho phép admin thêm, sửa, xóa phòng homestay
+
 •	Tiền điều kiện: Admin đã đăng nhập
+
 •	Luồng sự kiện chính:
+
 1.	Admin truy cập mục “Quản lý Homestay”
+
 2.	Chọn hành động: Thêm mới / Sửa / Xóa phòng
+
 3.	Nhập hoặc chỉnh sửa thông tin phòng
+
 4.	Nhấn “Lưu” → hệ thống lưu thông tin
+
 •	Hậu điều kiện: Dữ liệu homestay được cập nhật vào hệ thống
 
 
-
- 
-
-
+![](img/Picture6.png)
 
 
 
 e) Use Case: Quản lý đơn đặt phòng
+
 •	Tác nhân: Quản trị viên (Admin)
+
 •	Mục tiêu: Xem danh sách các đơn đặt
+
 •	Tiền điều kiện: Admin đã đăng nhập
+
 •	Luồng sự kiện chính:
+
 1.	Admin vào mục “Thống kê”
+
 2.	Xem danh sách đơn đặt từ người dùng
+
 •	Hậu điều kiện: Đơn đặt được xử lý, người dùng nhận được thông báo
 
+
 f) Use Case: Quản lý người dùng
+
 •	Tác nhân: Quản trị viên (Admin)
+
 •	Mục tiêu: Xem danh sách người dùng, khóa/mở tài khoản (nếu có)
+
 •	Tiền điều kiện: Admin đã đăng nhập
+
 •	Luồng sự kiện chính:
+
 1.	Admin vào mục “Quản lý người dùng”
+
 2.	Hệ thống hiển thị danh sách người dùng đã đăng ký
+
 3.	Admin có thể xem chi tiết, xóa hoặc khóa tài khoản người dùng
+
 •	Hậu điều kiện: Dữ liệu người dùng được cập nhật theo thao tác của admin
 
 g) Use Case: Xem thông tin chi tiết phòng
+
 •	Tác nhân: Người dùng (User)
+
 •	Mục tiêu: Xem thông tin chi tiết homestay như mô tả, hình ảnh, giá
+
 •	Tiền điều kiện: Người dùng đã tìm được phòng trong danh sách kết quả
+
 •	Luồng sự kiện chính:
+
 1.	Người dùng chọn một phòng bất kỳ
+
+
 2.	Hệ thống chuyển đến trang chi tiết
+
 3.	Hiển thị thông tin: tên phòng, ảnh, mô tả, giá, tiện ích, vị trí,...
+
 •	Hậu điều kiện: Người dùng có thể tiếp tục đặt phòng từ trang này
 
 
 
 
+5.2. Biểu đồ hoạt động (Activity Diagram)
 
- 5.2. Biểu đồ hoạt động (Activity Diagram)
 a) Chức năng tìm kiếm phòng
+
 Tác nhân: Người dùng
+
 Luồng chính:
+
 1.	Người dùng truy cập trang tìm kiếm phòng.
+
 2.	Người dùng chọn: 
+
 o	Ngày nhận phòng
+
 o	Ngày trả phòng  
+
 o	Thành phố cần tìm.
+
 3.	Nhấn nút Tìm kiếm.
+
 4.	Hệ thống truy vấn cơ sở dữ liệu, tìm các phòng:
+
 o	Thuộc thành phố đã chọn.
+
 o	Không bị đặt trùng trong khoảng thời gian người dùng chọn.
+
 5.	Nếu có kết quả, hệ thống hiển thị danh sách phòng phù hợp.
+
 6.	Người dùng có thể chọn một phòng bất kỳ để xem chi tiết hoặc đặt phòng.
+
+![](img/Picture7.png)
 
  
 
 b) Chức năng đặt phòng
+
 Tác nhân: Người dùng
+
 Luồng chính:
+
 1.	Người dùng đã đăng nhập và chọn được một phòng từ danh sách.
+
 2.	Người dùng nhập thông tin đặt phòng:
+
 o	Ngày nhận phòng.
+
 o	Ngày trả phòng.
+
 o	Số lượng người.
+
 3.	Nhấn nút Xác nhận đặt phòng.
+
 4.	Hệ thống kiểm tra:
+
 o	Thông tin hợp lệ.
+
 o	Phòng còn trống trong khoảng thời gian đã chọn.
+
 5.	Nếu mọi thứ hợp lệ, hệ thống tạo bản ghi mới trong bảng bookings.
+
 6.	Hiển thị thông báo: "Đặt phòng thành công" và chuyển hướng sang trang đơn đặt.
 
 
+![](img/Picture8.png)
  
-
 
 c) Chức năng: Cập nhật thông tin cá nhân
+
+
 Tác nhân: Người dùng
+
 Luồng chính:
+
 1.	Người dùng đăng nhập hệ thống.
+
 2.	Truy cập trang Thông tin cá nhân.
+
 3.	Nhập các thông tin muốn thay đổi:
+
 o	Tên, số điện thoại, địa chỉ,...
+
 4.	Nhấn nút Cập nhật thông tin.
+
 5.	Hệ thống kiểm tra tính hợp lệ của các trường 
+
 6.	Nếu hợp lệ, hệ thống cập nhật thông tin trong cơ sở dữ liệu.
+
 7.	Hiển thị thông báo: "Cập nhật thành công".
 
+![](img/Picture9.png)
 
- 
 
 
 
 d) Quản lý phong
+
 Tác nhân: Quản trị viên (Admin)
+
 Luồng chính:
+
 1.	Admin đăng nhập vào hệ thống quản trị.
+
 2.	Truy cập trang Quản lý phòng.
+
 3.	Từ danh sách phòng, Admin có thể:
+
 o	Thêm phòng mới.
+
 o	Sửa thông tin phòng có sẵn.
+
 o	Xoá phòng không còn hoạt động.
+
 4.	Với mỗi thao tác:
+
 o	Admin nhập hoặc chỉnh sửa thông tin (tên phòng, mô tả, giá, ảnh,...).
+
 o	Nhấn nút Lưu / Cập nhật / Xoá.
+
 5.	Hệ thống xác thực dữ liệu (ví dụ: giá phải là số, không để trống tên,...).
+
 6.	Cập nhật dữ liệu tương ứng trong cơ sở dữ liệu.
+
 7.	Hiển thị thông báo: “Thao tác thành công”.
 
 
- 
+![](img/Picture10.png)
 
 
 
-5.3 Thiết kế hướng đối tượng
+# 5.3 Thiết kế hướng đối tượng
 
 
- 
-
-
-
-
-
-
-
+![](img/Picture11.png)
 
 
 
 5.4. Biểu đồ luồng dữ liệu (Data Flow Diagram)
- DFD Level 0 (Context Diagram)
- 	Mô tả tổng quát:
-Hệ thống Booking Homestay có 2 tác nhân chính:
-•	Người dùng (User): tìm kiếm, xem phòng, đặt phòng, cập nhật thông tin cá nhân
-•	Quản trị viên (Admin): quản lý phòng, đơn đặt, người dùng
-Thành phần:
-•	Tác nhân ngoài (External Entities):
-o	Người dùng
-o	Quản trị viên (Admin)
-•	Hệ thống chính:
-o	Hệ thống đặt phòng Homestay
-•	Các kho dữ liệu (Data Stores):
-o	D1: Thông tin người dùng
-o	D2: Thông tin phòng
-o	D3: Thông tin đơn đặt phòng
-Luồng dữ liệu mô tả:
-Tác nhân	Luồng vào hệ thống	Luồng phản hồi từ hệ thống
-Người dùng	- Tìm kiếm phòng- Đặt phòng- Cập nhật thông tin cá nhân	- Danh sách phòng- Thông báo đặt phòng thành công- Xác nhận cập nhật thành công
-Admin	- Quản lý phòng- Quản lý đơn- Quản lý người dùng	- Kết quả thao tác: thêm/sửa/xoá xác nhận
 
+DFD Level 0 (Context Diagram)
+
+  Mô tả tổng quát:
+
+Hệ thống Booking Homestay có 2 tác nhân chính:
+
+•	Người dùng (User): tìm kiếm, xem phòng, đặt phòng, cập nhật thông tin cá nhân
+
+•	Quản trị viên (Admin): quản lý phòng, đơn đặt, người dùng
+
+Thành phần:
+
+•	Tác nhân ngoài (External Entities):
+
+o	Người dùng
+
+o	Quản trị viên (Admin)
+
+•	Hệ thống chính:
+
+o	Hệ thống đặt phòng Homestay
+
+•	Các kho dữ liệu (Data Stores):
+
+o	D1: Thông tin người dùng
+
+o	D2: Thông tin phòng
+
+o	D3: Thông tin đơn đặt phòng
+
+Luồng dữ liệu mô tả:
+
+|Tác nhân|	Luồng vào hệ thống	|Luồng phản hồi từ hệ thống|
+|----|-----|------|
+|Người dùng	|- Tìm kiếm phòng- Đặt phòng- Cập nhật thông tin cá nhân|	- Danh sách phòng- Thông báo đặt phòng thành công- Xác nhận cập nhật thành công|
+
+|Admin	|- Quản lý phòng- Quản lý đơn- Quản lý người dùng	|- Kết quả thao tác: thêm/sửa/xoá xác nhận|
 
 
 
