@@ -147,15 +147,12 @@ b) Chức năng của Quản trị viên (Admin)
 
 4.4. Công cụ hỗ trợ phát triển
 
-Công cụ	Mục đích sử dụng
-
-XAMPP	Giả lập môi trường máy chủ web (Apache + MySQL)
-
-VS Code	Trình soạn thảo mã nguồn chính
-
-Git	Quản lý mã nguồn và làm việc nhóm hiệu quả
-
-GitHub	Nơi lưu trữ mã nguồn dự án trên nền tảng cloud
+|Công cụ|	Mục đích sử dụng|
+|----|-----|
+|XAMPP	|Giả lập môi trường máy chủ web (Apache + MySQL)|
+|VS Code	|Trình soạn thảo mã nguồn chính|
+|Git|	Quản lý mã nguồn và làm việc nhóm hiệu quả|
+|GitHub|	Nơi lưu trữ mã nguồn dự án trên nền tảng cloud|
 
 5. Phân tích và Thiết kế Hệ thống
 
@@ -555,165 +552,274 @@ Luồng dữ liệu mô tả:
 
 
 
-
-
-
 DFD Level 1 – Chi tiết chức năng
+
 Tiến trình xử lý chính:
 
-Mã tiến trình	Tên tiến trình	Mô tả chức năng chính
-P1	Tìm kiếm phòng	Nhận thông tin ngày đến/ngày đi/thành phố → lọc phòng còn trống
-P2	Đặt phòng	Nhận thông tin đặt phòng từ người dùng → lưu đơn nếu hợp lệ
-P3	Cập nhật thông tin cá nhân	Người dùng cập nhật email, tên, sđt,... → cập nhật CSDL
-P4	Quản lý phòng	Admin thêm/sửa/xoá thông tin phòng → cập nhật bảng phòng
-P5	Quản lý đơn đặt phòng	Admin duyệt/hủy đơn đặt → cập nhật trạng thái đơn đặt
+|Mã tiến trình	|Tên tiến trình|	Mô tả chức năng chính|
+|----|-----|------|
+|P1	|Tìm kiếm phòng|	Nhận thông tin ngày đến/ngày đi/thành phố → lọc phòng còn trống|
+|P2	|Đặt phòng	|Nhận thông tin đặt phòng từ người dùng → lưu đơn nếu hợp lệ|
+|P3|	Cập nhật thông tin cá nhân	|Người dùng cập nhật email, tên, sđt,... → cập nhật CSDL|
+|P4|	Quản lý phòng|	Admin thêm/sửa/xoá thông tin phòng → cập nhật bảng phòng|
+|P5	|Quản lý đơn đặt phòng	|Admin duyệt/hủy đơn đặt → cập nhật trạng thái đơn đặt|
 
 
 Chi tiết từng tiến trình (logic dữ liệu):
- Tiến trình P1 – Tìm kiếm phòng
+
+Tiến trình P1 – Tìm kiếm phòng
+
 •	Luồng vào: 	
+
 Người dùng nhập ngày đến, ngày đi, thành phố
+
 •	Xử lý:
+
 o	Kiểm tra dữ liệu đầu vào
+
 o	Truy vấn bảng phòng D2, lọc những phòng còn trống
+
 •	Luồng ra:
+
 o	Trả về danh sách phòng phù hợp cho người dùng
+
 Tiến trình P2 – Đặt phòng
+
 •	Luồng vào:
+
 Người dùng chọn phòng và nhập ngày đến, ngày đi, số người
+
 •	Xử lý:
+
 o	Kiểm tra dữ liệu và phòng có bị trùng lịch không
+
 o	Nếu hợp lệ, lưu vào bảng D3: đơn đặt phòng
+
 •	Luồng ra:
+
 o	Thông báo đặt thành công / thất bại cho người dùng
 
-
 Tiến trình P3 – Cập nhật thông tin cá nhân
+
 •	Luồng vào:
+
 Người dùng nhập dữ liệu cần cập nhật (tên, email, sđt, …)
+
 •	Xử lý:
+
 o	Kiểm tra hợp lệ
+
 o	Cập nhật dữ liệu trong bảng D1: thông tin người dùng
+
 •	Luồng ra:
+
 o	Xác nhận cập nhật thành công
 
+
+
 Tiến trình P4 – Quản lý phòng (Admin)
+
 •	Luồng vào:
+
 Admin thêm mới / sửa / xoá thông tin phòng
+
 •	Xử lý:
+
 o	Kiểm tra dữ liệu nhập
+
 o	Thêm hoặc cập nhật bảng D2: phòng
+
 •	Luồng ra:
+
 o	Thông báo thành công hoặc lỗi cho admin
 
+
+
 Tiến trình P5 – Quản lý đơn đặt (Admin)
+
 •	Luồng vào:
+
 Admin chọn đơn → xác nhận hoặc huỷ
+
 •	Xử lý:
+
 o	Cập nhật trạng thái đơn trong bảng D3
+
 •	Luồng ra:
+
 o	Trả về kết quả cập nhật trạng thái cho admin
 
+
+
  5.5. Thiết kế cơ sở dữ liệu (Database Design)
+ 
  Mô hình thực thể - liên kết (ERD)
+ 
  Các thực thể chính:
-1.	User (Người dùng)
+1
+.	User (Người dùng)
+
 2.	Room (Phòng)
+
 3.	Booking (Đơn đặt phòng)
+
 4.	City (Thành phố)
+
 5.	Admin (quản lý)
+
  Các mối quan hệ:
-Mối quan hệ	Mô tả
-User – Booking	1 người dùng có thể tạo nhiều đơn đặt (1:N)
-Room – Booking	1 phòng có thể được đặt nhiều lần (1:N)
-City – Room	Mỗi phòng thuộc 1 thành phố (1:N)
-Admin – Room / Booking / User	Admin có quyền quản lý toàn bộ (N:M hoặc role-based)
+|Mối quan hệ	|Mô tả|
+|-----|------|
+|User – Booking|	1 người dùng có thể tạo nhiều đơn đặt (1:N)|
+
+|Room – Booking	|1 phòng có thể được đặt nhiều lần (1:N)|
+
+|City – Room|	Mỗi phòng thuộc 1 thành phố (1:N)|
+
+|Admin – Room / Booking / User|	Admin có quyền quản lý toàn bộ (N:M hoặc role-based)|
+
+
 
 Dạng bảng mô tả ERD:
 
 User
-Tên trường	Kiểu dữ liệu	Ràng buộc
-id	INT (PK)	Tự tăng
-name	VARCHAR(100)	NOT NULL
-email	VARCHAR(150)	UNIQUE, NOT NULL
-password	VARCHAR(255)	NOT NULL
-phone	VARCHAR(20)	NULL
-role	ENUM(user, admin)	Mặc định: 'user'
-created_at	TIMESTAMP	Mặc định CURRENT_TIMESTAMP
+
+|Tên trường|	Kiểu dữ liệu	|Ràng buộc|
+|---|----|----|
+|id	|INT (PK)	|Tự tăng|
+|name	|VARCHAR(100)|	NOT NULL|
+|email	|VARCHAR(150)|	UNIQUE, NOT NULL|
+|password	|VARCHAR(255)|	NOT NULL|
+|phone	|VARCHAR(20)	|NULL|
+|role	|ENUM(user, admin)	|Mặc định: 'user'|
+|created_at|	TIMESTAMP|	Mặc định CURRENT_TIMESTAMP|
+
 
 
 City
-Tên trường	Kiểu dữ liệu	Ràng buộc
-id	INT (PK)	Tự tăng
-name	VARCHAR(100)	UNIQUE, NOT NULL
+
+|Tên trường|	Kiểu dữ liệu|	Ràng buộc|
+|---|---|----|
+|id|	INT| (PK)|	Tự tăng|
+
+|name	|VARCHAR(100)|	UNIQUE, NOT NULL|
+
 Room
-Tên trường	Kiểu dữ liệu	Ràng buộc
-id	INT (PK)	Tự tăng
-name	VARCHAR(100)	NOT NULL
-description	TEXT	NULL
-price	DECIMAL(10,2)	NOT NULL
-image_path	VARCHAR(255)	NULL
-city_id	INT (FK → City)	NOT NULL
-status	BOOLEAN	TRUE = còn trống
-created_at	TIMESTAMP	
+
+|Tên trường|	Kiểu dữ liệu|	Ràng buộc|
+|--|---|----|
+|id|	INT (PK)|	Tự tăng|
+|name|	VARCHAR(100)|	NOT NULL|
+|description	|TEXT|	NULL|
+|price	|DECIMAL(10,2)|	NOT NULL|
+|image_path	|VARCHAR(255)|	NULL|
+|city_id	|INT (FK → City)	|NOT NULL|
+|status|	BOOLEAN	TRUE = còn trống|
+|created_at	|TIMESTAMP	|
 
 
 Booking
-Tên trường	Kiểu dữ liệu	Ràng buộc
-id	INT (PK)	Tự tăng
-user_id	INT (FK → User)	NOT NULL
-room_id	INT (FK → Room)	NOT NULL
-check_in	DATE	NOT NULL
-check_out	DATE	NOT NULL
-total_price	DECIMAL(10,2)	Tính từ số đêm × giá phòng
+|Tên trường|	Kiểu dữ liệu	|Ràng buộc|
+|id|	INT (PK)	|Tự tăng|
+|user_id	|INT (FK → User)	|NOT NULL|
+|room_id	|INT (FK → Room)	|NOT NULL|
+|check_in	|DATE	|NOT NULL|
+|check_out|	DATE	|NOT NULL|
+|total_price|	DECIMAL(10,2)	|Tính từ số đêm × giá phòng|
+
 
 6.Đánh giá kết quả
+
 6.1. Các chức năng đã hoàn thành
+
 Nhóm đã hoàn thiện và triển khai thành công các chức năng chính sau:
+
 •	Tìm kiếm phòng: theo thành phố, ngày đến và ngày đi.
+
 •	Xem chi tiết phòng: hiển thị đầy đủ thông tin và ảnh phòng.
+
 •	Đặt phòng: người dùng có thể chọn ngày, số người và gửi đơn đặt.
+
 •	Quản lý thông tin cá nhân: cập nhật tên, địa chỉ, số điện thoại,...
+
 •	Quản trị phòng (Admin): thêm, sửa, xóa thông tin phòng.
+
 •	Quản lý đơn đặt (Admin): xem, duyệt hoặc huỷ đơn đặt phòng.
+
 •	Phân quyền người dùng: tách biệt giao diện và quyền giữa người dùng và admin.
 
+
+
  6.2. Ưu điểm của hệ thống
-•	Hệ thống sử dụng Laravel (MVC) giúp tách biệt rõ ràng giữa dữ liệu – xử lý – giao diện.
+•
+Hệ thống sử dụng Laravel (MVC) giúp tách biệt rõ ràng giữa dữ liệu – xử lý – giao diện.
+
 •	Giao diện người dùng đơn giản, dễ thao tác, logic luồng hợp lý.
+
 •	Cấu trúc cơ sở dữ liệu chặt chẽ, đảm bảo quan hệ 1-N, N-N phù hợp với nghiệp vụ.
+
 •	Phân quyền rõ ràng giữa User và Admin.
+
 •	Code dễ mở rộng, chuẩn hoá theo PSR-4, dùng Eloquent ORM để quản lý dữ liệu hiệu quả.
 
+
+
 6.3. Hạn chế hiện tại
+
 •	Chưa có tích hợp cổng thanh toán online.
+
 •	Chưa gửi được email thông báo khi đặt phòng thành công.
+
 •	Giao diện chưa tối ưu cho thiết bị di động (responsive) hoàn chỉnh.
+
 •	Chưa có tính năng lọc nâng cao (giá, tiện nghi, loại phòng...).
+
 •	Bảo mật ở mức cơ bản, chưa có kiểm tra kỹ các lỗ hổng như XSS, SQLi.
 
+
+
 6.4. Hướng phát triển tiếp theo
+
 •	Tích hợp các phương thức thanh toán trực tuyến (Momo, VNPAY, PayPal...).
+
 •	Bổ sung tính năng gửi email xác nhận khi đặt phòng thành công hoặc cập nhật hồ sơ.
+
 •	Cải thiện giao diện thân thiện hơn, responsive hoàn toàn, thêm hiệu ứng động.
+
 •	Phát triển hệ thống thống kê báo cáo dành cho admin (doanh thu, số lượng người dùng,...).
+
 •	Tối ưu hệ thống với Redis, Memcached hoặc cache Laravel để tăng hiệu suất.
+
 •	Viết unit test và bổ sung kiểm thử bảo mật tự động (Laravel Dusk, PHPUnit,...).
+
+
 
 7. Kết luận
 
+
+
 7.1. Tổng kết quá trình làm việc nhóm
-Trong quá trình thực hiện dự án, nhóm đã cùng nhau lên kế hoạch, phân chia công việc hợp lý, phối hợp thực hiện từ giai đoạn phân tích yêu cầu, thiết kế hệ thống, xây dựng giao diện đến lập trình và kiểm thử. Mỗi thành viên đều tích cực đóng góp công sức và học hỏi lẫn nhau để hoàn thành sản phẩm đúng thời hạn.
+
+Trong quá trình thực hiện dự án, nhóm đã cùng nhau lên kế hoạch, phân chia công việc hợp lý, phối hợp thực hiện từ giai đoạn phân tích yêu cầu, thiết kế hệ thống, 
+xây dựng giao diện đến lập trình và kiểm thử. Mỗi thành viên đều tích cực đóng góp công sức và học hỏi lẫn nhau để hoàn thành sản phẩm đúng thời hạn.
 
 7.2. Kết quả đạt được
+
 Dự án đã hoàn thiện về mặt chức năng cơ bản và đáp ứng được mục tiêu ban đầu đề ra. Hệ thống hoạt động ổn định, đầy đủ các luồng nghiệp vụ cơ bản của một website đặt homestay. Giao diện thân thiện, dễ thao tác và dữ liệu được xử lý hiệu quả.
 
- 7.3. Kiến thức và kỹ năng rút ra
+7.3. Kiến thức và kỹ năng rút ra
+
 Qua quá trình thực hiện, nhóm đã rèn luyện và nâng cao các kỹ năng:
+
 •	Phân tích và thiết kế phần mềm theo hướng đối tượng (UML, DFD, ERD,...).
+
 •	Xây dựng hệ thống bằng framework Laravel, quản lý dữ liệu với Eloquent ORM.
+
 •	Sử dụng MySQL để thiết kế và vận hành cơ sở dữ liệu.
+
 •	Làm việc nhóm, phân chia công việc hợp lý và hỗ trợ lẫn nhau.
+
 •	Làm báo cáo kỹ thuật và trình bày hệ thống một cách khoa học.
+
 
 
